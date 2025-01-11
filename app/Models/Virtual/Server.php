@@ -5,6 +5,7 @@ namespace App\Models\Virtual;
 use App\Models\Authority;
 use App\Models\Remote;
 use App\Services\CheckpointerService;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,7 +21,7 @@ use Sushi\Sushi;
  * @property int $latency
  * @property int $players_current
  * @property int $players_max
- * @property int $last_updated
+ * @property Carbon $last_updated
  * @property string $game_version
  */
 class Server extends Model
@@ -30,6 +31,10 @@ class Server extends Model
     protected $hidden = [
         'remote',
         'authority',
+    ];
+
+    protected $casts = [
+        'last_updated' => 'datetime',
     ];
 
     /* sushi internal */

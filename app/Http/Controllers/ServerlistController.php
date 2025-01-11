@@ -37,7 +37,7 @@ class ServerlistController extends Controller
             'latency' => $server->latency,
             'players_current' => $server->players_current,
             'players_max' => $server->players_max,
-            'last_updated' => $server->last_updated,
+            'last_updated' => $server->last_updated->timestamp,
             'game_version' => $server->game_version,
         ];
     }
@@ -62,7 +62,7 @@ class ServerlistController extends Controller
             'latency' => $server->latency,
             'players_current' => $server->players_current,
             'players_max' => $server->players_max,
-            'last_updated' => $server->last_updated,
+            'last_updated' => $server->last_updated->timestamp,
             'game_version' => $server->game_version,
         ];
     }
