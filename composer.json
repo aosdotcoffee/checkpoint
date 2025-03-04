@@ -4,7 +4,7 @@
     "type": "project",
     "description": "Fetch, merge, moderate and verify Ace of Spades server lists.",
     "keywords": [],
-    "license": "MIT",
+    "license": "AGPL-3.0-only",
     "require": {
         "php": "^8.2",
         "calebporzio/sushi": "^2.5",
