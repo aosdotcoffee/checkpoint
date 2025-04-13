@@ -21,14 +21,16 @@ final class CheckpointerService
 
     public function getList(bool $cacheRemotes = false)
     {
+        $fetcher = new Fetcher($this->remotes);
+
         if ($cacheRemotes) {
             $servers = Cache::remember(
                 key: 'fetcher.servers',
                 ttl: 15,
-                callback: fn () => Fetcher::fetchServers(remotes: $this->remotes),
+                callback: fn () => $fetcher->fetchServers(),
             );
         } else {
-            $servers = Fetcher::fetchServers(remotes: $this->remotes);
+            $servers = $fetcher->fetchServers();
         }
 
         $servers = Merger::merge($servers);
