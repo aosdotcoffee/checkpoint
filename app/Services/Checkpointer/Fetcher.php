@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Checkpointer;
 
 use App\Models\Remote;
-use App\Models\Virtual\Server;
+use App\Models\Virtual\ServerDto;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Facades\Http;
@@ -45,7 +45,7 @@ final class Fetcher
      */
     public static function fetchServers(EloquentCollection $remotes)
     {
-        /** @var EloquentCollection<Server> */
+        /** @var EloquentCollection<ServerDto> */
         $collection = new EloquentCollection();
         $listMap = static::fetchRemoteJSONs(remotes: $remotes);
 
@@ -58,7 +58,7 @@ final class Fetcher
                 $address = "{$bytes[3]}.{$bytes[2]}.{$bytes[1]}.{$bytes[0]}";
                 $port = (int) $url['port'];
 
-                $server = new Server([
+                $server = new ServerDto([
                     'name' => $serverJSON['name'],
                     'ip_address' => $address,
                     'port' => $port,

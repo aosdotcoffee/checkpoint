@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Services\Checkpointer;
 
-use App\Models\Virtual\Server;
+use App\Models\Virtual\ServerDto;
 use Illuminate\Database\Eloquent\Collection;
 
 final class Merger
 {
     /**
-     * @param Collection<Server> $collection
-     * @return Collection<Server>
+     * @param Collection<ServerDto> $collection
+     * @return Collection<ServerDto>
      */
     public static function merge(Collection $collection): Collection
     {

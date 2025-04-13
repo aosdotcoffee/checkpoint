@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Virtual\Server;
+use App\Models\Virtual\ServerDto;
 use App\Services\CheckpointerService;
 use Illuminate\Http\Request;
 
@@ -26,7 +26,7 @@ class ServerlistController extends Controller
             ->header('access-control-allow-origin', '*');
     }
 
-    private function mapServer(Server $server)
+    private function mapServer(ServerDto $server)
     {
         return [
             'name' => $server->name,
@@ -42,7 +42,7 @@ class ServerlistController extends Controller
         ];
     }
 
-    private function mapServerDebug(Server $server)
+    private function mapServerDebug(ServerDto $server)
     {
         $nameSuffix = '';
         if ($server->authority) {

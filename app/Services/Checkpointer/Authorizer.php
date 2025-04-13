@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace App\Services\Checkpointer;
 
 use App\Models\Authority;
-use App\Models\Virtual\Server;
+use App\Models\Virtual\ServerDto;
 use Illuminate\Database\Eloquent\Collection;
 
 final class Authorizer
 {
     /**
-     * @param Collection<Server> $collection
-     * @return Collection<Server>
+     * @param Collection<ServerDto> $collection
+     * @return Collection<ServerDto>
      */
     public static function verify(Collection $collection): Collection
     {
         $authorities = Authority::all();
 
-        /** @var Server $server */
+        /** @var ServerDto $server */
         foreach ($collection as $server) {
             /* check if the server has a name reserved by an authority */
             $authority = $authorities->firstWhere(
