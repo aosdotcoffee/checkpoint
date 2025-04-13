@@ -26,7 +26,7 @@ final class CheckpointerService
         if ($cacheRemotes) {
             $servers = Cache::remember(
                 key: 'fetcher.servers',
-                ttl: 15,
+                ttl: 5,
                 callback: fn () => $fetcher->fetchServers(),
             );
         } else {
