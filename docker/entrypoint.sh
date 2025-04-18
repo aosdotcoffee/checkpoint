@@ -1,7 +1,13 @@
 #!/bin/sh
 
+tail_logs() {
+    while true; do
+        php artisan --timeout=3600 pail
+    done
+}
+
 start_app() {
-    php artisan pail &
+    tail_logs &
     frankenphp php-server -r public/ --listen "$CHECKPOINT_HOST:$CHECKPOINT_PORT"
 }
 
