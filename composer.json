@@ -10,6 +10,7 @@
         "calebporzio/sushi": "^2.5",
         "filament/filament": "^3.2",
         "laravel/framework": "^12.0",
+        "laravel/pail": "^1.2",
         "laravel/tinker": "^2.10.1",
         "mlocati/ip-lib": "^1.18",
         "phpsa/filament-authentication": "^5.0"
@@ -17,7 +18,6 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.3",
         "fakerphp/faker": "^1.23",
-        "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
