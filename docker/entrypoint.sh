@@ -16,7 +16,7 @@ start_worker() {
 
 start_scheduler() {
     while true; do
-        php artisan schedule:work
+        php artisan schedule:work > /dev/null 2> /dev/null
         sleep 2
     done
 }
