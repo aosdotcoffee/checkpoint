@@ -49,7 +49,6 @@ final class Fetcher
     private function fetchServerlists()
     {
         return Http::createPendingRequest()
-            ->withHeader('User-Agent', 'Checkpoint')
             ->withHeader('Accept', 'application/json')
             ->pool($this->createRequests(...));
     }
