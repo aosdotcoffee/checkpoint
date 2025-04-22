@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models\Traits;
 
 use App\Services\IPTools;
+use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Query\Builder;
@@ -56,7 +57,8 @@ trait IPRange
         return $attributes;
     }
 
-    protected function scopeOfAddress(Builder|EloquentBuilder $query, string $address)
+    #[Scope]
+    protected function ofAddress(Builder|EloquentBuilder $query, string $address)
     {
         $address = IPLib::parseAddressString($address);
         if ($address === null) {
