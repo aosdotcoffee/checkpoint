@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "370b86d731652f12b3195a32b46d8fcc",
+    "content-hash": "f4c7701ddffb6fc0f3ffbecbaf3672d0",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -7886,16 +7886,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "v3.5.5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "8d441ec99f8612b942b55f5183151d91591b618a"
+                "reference": "0fa96e572d3ac8f280ad1be89e9c3747c481cdda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/8d441ec99f8612b942b55f5183151d91591b618a",
-                "reference": "8d441ec99f8612b942b55f5183151d91591b618a",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/0fa96e572d3ac8f280ad1be89e9c3747c481cdda",
+                "reference": "0fa96e572d3ac8f280ad1be89e9c3747c481cdda",
                 "shasum": ""
             },
             "require": {
@@ -7923,6 +7923,7 @@
             "suggest": {
                 "illuminate/events": "Required for automatic helper generation (^6|^7|^8|^9|^10|^11)."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -7964,7 +7965,7 @@
             ],
             "support": {
                 "issues": "https://github.com/barryvdh/laravel-ide-helper/issues",
-                "source": "https://github.com/barryvdh/laravel-ide-helper/tree/v3.5.5"
+                "source": "https://github.com/barryvdh/laravel-ide-helper/tree/master"
             },
             "funding": [
                 {
@@ -7976,7 +7977,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-11T13:59:46+00:00"
+            "time": "2025-04-22T13:31:43+00:00"
         },
         {
             "name": "barryvdh/reflection-docblock",
@@ -10383,7 +10384,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "barryvdh/laravel-ide-helper": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
