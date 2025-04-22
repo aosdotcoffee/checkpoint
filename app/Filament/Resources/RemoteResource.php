@@ -6,6 +6,7 @@ use App\Enums\RemoteStatus;
 use App\Filament\Resources\RemoteResource\Pages;
 use App\Filament\Resources\RemoteResource\RelationManagers;
 use App\Models\Remote;
+use App\Services\Remote\Status;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -45,6 +46,13 @@ class RemoteResource extends Resource
                     ->url()
                     ->maxLength(255)
                     ->columnSpanFull(),
+
+                Forms\Components\Textarea::make('message')
+                    ->disabled()
+                    ->extraInputAttributes(['class' => 'font-mono'])
+                    ->placeholder('(none)')
+                    ->columnSpanFull()
+                    ->rows(16),
             ]);
     }
 
@@ -69,6 +77,21 @@ class RemoteResource extends Resource
                     ->openUrlInNewTab()
                     ->icon('heroicon-o-arrow-top-right-on-square')
                     ->iconPosition(IconPosition::After),
+
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->icon(fn (Status $state) => match ($state) {
+                        Status::Up => 'heroicon-o-check',
+                        Status::Down => 'heroicon-o-chevron-down',
+                    })
+                    ->color(fn (Status $state) => match ($state) {
+                        Status::Up => 'success',
+                        Status::Down => 'danger',
+                    })
+                    ->formatStateUsing(fn (Status $state) => match ($state) {
+                        Status::Up => 'Working',
+                        Status::Down => 'Down',
+                    }),
             ])
             ->filters([
                 //

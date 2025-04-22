@@ -6,9 +6,12 @@ namespace App\Services\Checkpointer;
 
 use App\Services\Remote\Remote;
 use App\Models\Virtual\ServerDto;
+use App\Services\Checkpointer\Events\RemoteConnectionFailed;
 use Illuminate\Database\Eloquent;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Http;
 
 final class Fetcher
@@ -39,6 +42,7 @@ final class Fetcher
         foreach ($this->remotes as $remote) {
             $pool
                 ->as(spl_object_hash($remote))
+                ->timeout(3)
                 ->get($remote->getUrl());
         }
     }
@@ -60,6 +64,16 @@ final class Fetcher
     {
         foreach ($this->fetchServerlists() as $key => $value) {
             $remote = $this->remotes[$key];
+
+            if ($value instanceof ConnectionException) {
+                /** @var ConnectionException $value */
+                Event::dispatch(new RemoteConnectionFailed(
+                    remote: $remote,
+                    error: $value,
+                ));
+
+                continue;
+            }
 
             yield $remote => $value->json();
         }
