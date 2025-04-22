@@ -6,8 +6,15 @@ tail_logs() {
     done
 }
 
+start_worker() {
+    while true; do
+        php artisan queue:work --queue=default
+    done
+}
+
 start_app() {
     tail_logs &
+    start_worker &
     frankenphp php-server -r public/ --listen "$CHECKPOINT_HOST:$CHECKPOINT_PORT"
 }
 
