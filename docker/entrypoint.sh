@@ -3,18 +3,21 @@
 tail_logs() {
     while true; do
         php artisan --timeout=3600 pail
+        sleep 2
     done
 }
 
 start_worker() {
     while true; do
         php artisan queue:work --queue=default
+        sleep 2
     done
 }
 
 start_scheduler() {
     while true; do
         php artisan schedule:work
+        sleep 2
     done
 }
 
