@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Remote;
 use App\Services\CheckpointerService;
+use App\Services\Remote\Remote;
 use Illuminate\Support\ServiceProvider;
 
 class CheckpointerServiceProvider extends ServiceProvider
@@ -22,7 +22,7 @@ class CheckpointerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->app->singleton(CheckpointerService::class, function() {
-            $remotes = Remote::query()->enabled()->get();
+            $remotes = Remote::active();
 
             return new CheckpointerService(remotes: $remotes);
         });
