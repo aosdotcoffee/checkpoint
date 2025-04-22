@@ -5,20 +5,21 @@ declare(strict_types=1);
 namespace App\Services\Remote;
 
 use App\Models;
-use Illuminate\Database\Eloquent;
 
 final readonly class Remote
 {
     /**
      * Get all active remotes
      *
-     * @return Eloquent\Collection<int, Models\Remote>
+     * @return array<int, static>
      */
     public static function active()
     {
         return Models\Remote::query()
             ->enabled()
-            ->get();
+            ->get()
+            ->map(fn ($model) => new static($model))
+            ->toArray();
     }
 
     public function __construct(private Models\Remote $model)
@@ -32,5 +33,13 @@ final readonly class Remote
     public function getModel()
     {
         return $this->model;
+    }
+
+    /**
+     * Get the remote's URL
+     */
+    public function getUrl()
+    {
+        return $this->model->url;
     }
 }

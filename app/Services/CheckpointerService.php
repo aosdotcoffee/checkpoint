@@ -9,15 +9,19 @@ use App\Services\Checkpointer\Authorizer;
 use App\Services\Checkpointer\Fetcher;
 use App\Services\Checkpointer\Merger;
 use App\Services\Checkpointer\Moderator;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 
 final class CheckpointerService
 {
     /**
-     * @param Collection<Remote> $remotes
+     * @param array<int, Remote> $remotes
      */
-    public function __construct(private Collection $remotes) {}
+    private array $remotes;
+
+    public function __construct(array $remotes)
+    {
+        $this->remotes = $remotes;
+    }
 
     public function getList(bool $cacheRemotes = false)
     {

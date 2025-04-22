@@ -4,20 +4,32 @@ declare(strict_types=1);
 
 namespace App\Services\Checkpointer;
 
-use App\Models\Remote;
+use App\Services\Remote\Remote;
 use App\Models\Virtual\ServerDto;
 use Illuminate\Database\Eloquent;
 use Illuminate\Http\Client\Pool;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 
 final class Fetcher
 {
     /**
-     * @param Eloquent\Collection<int, Remote> $remotes
+     * Array of remotes, indexed by object hash
+     *
+     * @var array<string, Remote>
      */
-    public function __construct(
-        private Eloquent\Collection $remotes,
-    ) { }
+    private array $remotes;
+
+    /**
+     * @param array<int, Remote> $remotes
+     */
+    public function __construct(array $remotes)
+    {
+        $this->remotes = Arr::mapWithKeys(
+            $remotes,
+            fn ($item) => [spl_object_hash($item) => $item],
+        );
+    }
 
     /**
      * Add the requests to send out to the HTTP pool
@@ -26,8 +38,8 @@ final class Fetcher
     {
         foreach ($this->remotes as $remote) {
             $pool
-                ->as((string) $remote->id)
-                ->get($remote->url);
+                ->as(spl_object_hash($remote))
+                ->get($remote->getUrl());
         }
     }
 
@@ -48,9 +60,7 @@ final class Fetcher
     private function getResponses()
     {
         foreach ($this->fetchServerlists() as $key => $value) {
-            $remote = $this->remotes
-                ->where('id', $key)
-                ->firstOrFail();
+            $remote = $this->remotes[$key];
 
             yield $remote => $value->json();
         }
@@ -79,7 +89,7 @@ final class Fetcher
             'players_max' => $json['players_max'],
             'last_updated' => $json['last_updated'],
             'game_version' => $json['game_version'],
-            'remote_id' => $remote->id,
+            'remote_id' => $remote->getModel()->id,
         ]);
     }
 
