@@ -13,7 +13,11 @@ class CheckpointerServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(CheckpointerService::class, function() {
+            $remotes = Remote::active();
+
+            return new CheckpointerService(remotes: $remotes);
+        });
     }
 
     /**
@@ -21,10 +25,6 @@ class CheckpointerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->app->singleton(CheckpointerService::class, function() {
-            $remotes = Remote::active();
-
-            return new CheckpointerService(remotes: $remotes);
-        });
+        //
     }
 }
