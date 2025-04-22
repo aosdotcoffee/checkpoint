@@ -12,9 +12,16 @@ start_worker() {
     done
 }
 
+start_scheduler() {
+    while true; do
+        php artisan schedule:work
+    done
+}
+
 start_app() {
     tail_logs &
     start_worker &
+    start_scheduler &
     frankenphp php-server -r public/ --listen "$CHECKPOINT_HOST:$CHECKPOINT_PORT"
 }
 
