@@ -39,7 +39,8 @@ class CheckpointerServiceProvider extends ServiceProvider
         $key = "onRemoteConnectionFailed#{$event->remote->getModel()->id}";
 
         Cache::lock($key, seconds: 5)->get(function() use (&$event) {
-            if ($event->remote->isDown()) {
+            // If this was updated by another process in the meantime, we need to refresh it
+            if ($event->remote->refresh()->isDown()) {
                 return;
             }
 

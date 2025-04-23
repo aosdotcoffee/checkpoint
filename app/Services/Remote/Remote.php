@@ -124,4 +124,14 @@ final readonly class Remote
     {
         return "'{$this->model->short_name}' ({$this->model->name})";
     }
+
+    /**
+     * Refresh the model state
+     */
+    public function refresh()
+    {
+        $this->model->refresh();
+
+        return $this;
+    }
 }
