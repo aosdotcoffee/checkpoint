@@ -26,10 +26,10 @@ importers:
         version: 9.2.1
       laravel-vite-plugin:
         specifier: ^2.0.1
-        version: 2.0.1(vite@7.1.4(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1))
+        version: 2.0.1(vite@7.1.5(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1))
       vite:
-        specifier: ^7.1.4
-        version: 7.1.4(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1)
+        specifier: ^7.1.5
+        version: 7.1.5(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1)
 
 packages:
 
@@ -558,8 +558,8 @@ packages:
   vite-plugin-full-reload@1.2.0:
     resolution: {integrity: sha512-kz18NW79x0IHbxRSHm0jttP4zoO9P9gXh+n6UTwlNKnviTTEpOlum6oS9SmecrTtSr+muHEn5TUuC75UovQzcA==}
 
-  vite@7.1.4:
-    resolution: {integrity: sha512-X5QFK4SGynAeeIt+A7ZWnApdUyHYm+pzv/8/A57LqSGcI88U6R6ipOs3uCesdc6yl7nl+zNO0t8LmqAdXcQihw==}
+  vite@7.1.5:
+    resolution: {integrity: sha512-4cKBO9wR75r0BeIWWWId9XK9Lj6La5X846Zw9dFfzMRw38IlTk2iCcUt6hsyiDRcPidc55ZParFYDXi0nXOeLQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -898,10 +898,10 @@ snapshots:
 
   jquery@3.7.1: {}
 
-  laravel-vite-plugin@2.0.1(vite@7.1.4(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1)):
+  laravel-vite-plugin@2.0.1(vite@7.1.5(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1)):
     dependencies:
       picocolors: 1.1.1
-      vite: 7.1.4(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1)
+      vite: 7.1.5(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1)
       vite-plugin-full-reload: 1.2.0
 
   less@4.2.1:
@@ -1050,7 +1050,7 @@ snapshots:
       picocolors: 1.1.1
       picomatch: 2.3.1
 
-  vite@7.1.4(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1):
+  vite@7.1.5(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1):
     dependencies:
       esbuild: 0.25.9
       fdir: 6.5.0(picomatch@4.0.3)
