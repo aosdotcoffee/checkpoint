@@ -25,8 +25,8 @@ importers:
         specifier: ^9.2.1
         version: 9.2.1
       laravel-vite-plugin:
-        specifier: ^2.0.1
-        version: 2.0.1(vite@7.3.0(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1))
+        specifier: ^2.1.0
+        version: 2.1.0(vite@7.3.0(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1))
       vite:
         specifier: ^7.3.0
         version: 7.3.0(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1)
@@ -431,8 +431,8 @@ packages:
   jquery@3.7.1:
     resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
 
-  laravel-vite-plugin@2.0.1:
-    resolution: {integrity: sha512-zQuvzWfUKQu9oNVi1o0RZAJCwhGsdhx4NEOyrVQwJHaWDseGP9tl7XUPLY2T8Cj6+IrZ6lmyxlR1KC8unf3RLA==}
+  laravel-vite-plugin@2.1.0:
+    resolution: {integrity: sha512-z+ck2BSV6KWtYcoIzk9Y5+p4NEjqM+Y4i8/H+VZRLq0OgNjW2DqyADquwYu5j8qRvaXwzNmfCWl1KrMlV1zpsg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -509,8 +509,9 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  sax@1.4.3:
-    resolution: {integrity: sha512-yqYn1JhPczigF94DMS+shiDMjDowYO6y9+wB/4WgO0Y19jWYk0lQ4tuG5KI7kj4FTp1wxPj5IFfcrz/s1c3jjQ==}
+  sax@1.4.4:
+    resolution: {integrity: sha512-1n3r/tGXO6b6VXMdFT54SHzT9ytu9yr7TaELowdYpMqY/Ao7EnlQGmAQ1+RatX7Tkkdm6hONI2owqNx2aZj5Sw==}
+    engines: {node: '>=11.0.0'}
 
   semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
@@ -909,7 +910,7 @@ snapshots:
 
   jquery@3.7.1: {}
 
-  laravel-vite-plugin@2.0.1(vite@7.3.0(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1)):
+  laravel-vite-plugin@2.1.0(vite@7.3.0(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1)):
     dependencies:
       picocolors: 1.1.1
       vite: 7.3.0(jiti@1.21.7)(less@4.2.1)(yaml@2.6.1)
@@ -944,7 +945,7 @@ snapshots:
   needle@3.3.1:
     dependencies:
       iconv-lite: 0.6.3
-      sax: 1.4.3
+      sax: 1.4.4
     optional: true
 
   node-releases@2.0.27: {}
@@ -1009,7 +1010,7 @@ snapshots:
   safer-buffer@2.1.2:
     optional: true
 
-  sax@1.4.3:
+  sax@1.4.4:
     optional: true
 
   semver@5.7.2:
