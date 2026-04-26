@@ -13,6 +13,7 @@ use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 final class Fetcher
 {
@@ -75,7 +76,17 @@ final class Fetcher
                 continue;
             }
 
-            yield $remote => $value->json();
+            $body = iconv('CP437', 'UTF-8//IGNORE', $value->body());
+            if ($body === false) {
+                Log::error("Failed to convert response from remote {remote} from CP437 to UTF-8", [
+                    'remote' => $remote->getFullName(),
+                    'body' => $value->body(),
+                ]);
+
+                continue;
+            }
+
+            yield $remote => json_decode($body, associative: true, flags: JSON_THROW_ON_ERROR);
         }
     }
 
