@@ -16,7 +16,7 @@ class CheckpointerServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(CheckpointerService::class, function() {
+        $this->app->singleton(CheckpointerService::class, function () {
             $remotes = Remote::active();
 
             return new CheckpointerService(remotes: $remotes);
@@ -38,7 +38,7 @@ class CheckpointerServiceProvider extends ServiceProvider
     {
         $key = "onRemoteConnectionFailed#{$event->remote->getModel()->id}";
 
-        Cache::lock($key, seconds: 5)->get(function() use (&$event) {
+        Cache::lock($key, seconds: 5)->get(function () use (&$event) {
             // If this was updated by another process in the meantime, we need to refresh it
             if ($event->remote->refresh()->isDown()) {
                 return;

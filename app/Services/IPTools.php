@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Services;
 
 use IPLib\Factory as IPLib;
-use IPLib\Address;
 
 final class IPTools
 {
@@ -53,8 +52,8 @@ final class IPTools
         $rangeEnd = $range->getAddressAtOffset(-1);
 
         return [
-            static::rangeByteArrayToByteString($rangeStart->getBytes()),
-            static::rangeByteArrayToByteString($rangeEnd->getBytes()),
+            self::rangeByteArrayToByteString($rangeStart->getBytes()),
+            self::rangeByteArrayToByteString($rangeEnd->getBytes()),
         ];
     }
 }

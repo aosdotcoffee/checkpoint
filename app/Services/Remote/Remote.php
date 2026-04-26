@@ -24,7 +24,7 @@ final readonly class Remote
             ->enabled()
             ->status(Status::Up)
             ->get()
-            ->map(fn ($model) => new static($model))
+            ->map(fn ($model) => new self($model))
             ->toArray();
     }
 
@@ -39,7 +39,7 @@ final readonly class Remote
             ->enabled()
             ->status(Status::Down)
             ->get()
-            ->map(fn ($model) => new static($model))
+            ->map(fn ($model) => new self($model))
             ->toArray();
     }
 

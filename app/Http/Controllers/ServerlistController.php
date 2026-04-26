@@ -13,7 +13,7 @@ class ServerlistController extends Controller
         $list = $checkpointer->getList(cacheRemotes: true)
             ->map(
                 $request->input('debug') === '1' ?
-                    $this->mapServerDebug(...):
+                    $this->mapServerDebug(...) :
                     $this->mapServer(...)
             )
             ->values()
@@ -54,7 +54,7 @@ class ServerlistController extends Controller
         $nameSuffix .= " [{$server->remote->short_name}]";
 
         return [
-            'name' => $server->name . $nameSuffix,
+            'name' => $server->name.$nameSuffix,
             'identifier' => $server->identifier,
             'map' => $server->map,
             'game_mode' => $server->gamemode,

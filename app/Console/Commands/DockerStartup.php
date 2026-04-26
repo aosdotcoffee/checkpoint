@@ -34,9 +34,9 @@ class DockerStartup extends Command
         $user->assignRole($superAdminRole);
 
         $this->components->info('The default user was created with the following credentials:');
-        print "         -> Email: superadmin@checkpoint\n";
-        print "         -> Password: {$password}\n\n";
-        print "         \x1b[33mThese details will not be shown again\x1b[0m\n";
+        echo "         -> Email: superadmin@checkpoint\n";
+        echo "         -> Password: {$password}\n\n";
+        echo "         \x1b[33mThese details will not be shown again\x1b[0m\n";
     }
 
     public function handle()

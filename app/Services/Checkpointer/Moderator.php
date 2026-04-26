@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 final class Moderator
 {
     /**
-     * @param Collection<ServerDto> $collection
+     * @param  Collection<ServerDto>  $collection
      * @return Collection<ServerDto>
      */
     public static function moderate(Collection $collection): Collection

@@ -74,6 +74,7 @@ trait IPRange
     public function matchesAddress(string $address)
     {
         $range = $this->getRange();
+
         return $range->contains(IPLib::parseAddressString($address));
     }
 }

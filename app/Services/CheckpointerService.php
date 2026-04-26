@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Cache;
 final class CheckpointerService
 {
     /**
-     * @param array<int, Remote> $remotes
+     * @param  array<int, Remote>  $remotes
      */
     private array $remotes;
 

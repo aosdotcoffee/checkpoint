@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         Model::unguard();
         Gate::policy(Role::class, RolePolicy::class);
         Gate::policy(Permission::class, RolePolicy::class);
-        Gate::before(fn ($user, $ability) => $user->hasRole('superadmin') ? true: null);
+        Gate::before(fn ($user, $ability) => $user->hasRole('superadmin') ? true : null);
         // Gate::before(fn ($user, $ability) => true);
 
         $this->injectGlobalHttpClientUserAgent();

@@ -2,9 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\RemoteStatus;
 use App\Filament\Resources\RemoteResource\Pages;
-use App\Filament\Resources\RemoteResource\RelationManagers;
 use App\Models\Remote;
 use App\Services\Remote\Status;
 use Filament\Forms;
@@ -13,8 +11,6 @@ use Filament\Resources\Resource;
 use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class RemoteResource extends Resource
 {

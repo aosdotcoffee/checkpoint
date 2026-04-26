@@ -43,7 +43,7 @@ class ServerDto extends Model
 
     protected function identifier(): Attribute
     {
-        return Attribute::get(function(): string {
+        return Attribute::get(function (): string {
             $address = explode('.', $this->ip_address);
             $reversedAddress = implode('.', array_reverse($address));
             $decimal = ip2long($reversedAddress);

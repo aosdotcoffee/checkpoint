@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Virtual;
 
 use App\Filament\Resources\Virtual\ServerResource\Pages;
-use App\Filament\Resources\Virtual\ServerResource\RelationManagers;
 use App\Models\Ban;
 use App\Models\Virtual\Server;
 use Filament\Forms;
@@ -12,8 +11,6 @@ use Filament\Resources\Resource;
 use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ServerResource extends Resource
 {
@@ -37,12 +34,11 @@ class ServerResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->sortable()
-                    ->icon(fn (Server $server) => $server->authority ? 'heroicon-m-check-badge': null)
+                    ->icon(fn (Server $server) => $server->authority ? 'heroicon-m-check-badge' : null)
                     ->iconPosition(IconPosition::After)
                     ->iconColor('success')
-                    ->tooltip(fn (Server $server) =>
-                        $server->authority ?
-                            "Verified authority: {$server->authority->name}":
+                    ->tooltip(fn (Server $server) => $server->authority ?
+                            "Verified authority: {$server->authority->name}" :
                             null
                     ),
 

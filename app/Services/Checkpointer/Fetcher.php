@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services\Checkpointer;
 
-use App\Services\Remote\Remote;
 use App\Models\Virtual\ServerDto;
 use App\Services\Checkpointer\Events\RemoteConnectionFailed;
+use App\Services\Remote\Remote;
 use Illuminate\Database\Eloquent;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Pool;
@@ -26,7 +26,7 @@ final class Fetcher
     private array $remotes;
 
     /**
-     * @param array<int, Remote> $remotes
+     * @param  array<int, Remote>  $remotes
      */
     public function __construct(array $remotes)
     {
@@ -79,7 +79,7 @@ final class Fetcher
 
             $body = iconv('CP437', 'UTF-8//IGNORE', $value->body());
             if ($body === false) {
-                Log::error("Failed to convert response from remote {remote} from CP437 to UTF-8", [
+                Log::error('Failed to convert response from remote {remote} from CP437 to UTF-8', [
                     'remote' => $remote->getFullName(),
                     'body' => $value->body(),
                 ]);
@@ -139,8 +139,7 @@ final class Fetcher
         foreach ($this->getResponses() as $remote => $servers) {
             $objects = array_map(
                 array: $servers,
-                callback: fn (array $json) =>
-                    $this->mapJsonToServer($remote, $json),
+                callback: fn (array $json) => $this->mapJsonToServer($remote, $json),
             );
 
             $collection->push(...$objects);

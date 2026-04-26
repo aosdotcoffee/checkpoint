@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 final class Authorizer
 {
     /**
-     * @param Collection<ServerDto> $collection
+     * @param  Collection<ServerDto>  $collection
      * @return Collection<ServerDto>
      */
     public static function verify(Collection $collection): Collection
@@ -46,6 +46,7 @@ final class Authorizer
         }
 
         $collection->loadMissing('authority');
+
         return $collection;
     }
 }
