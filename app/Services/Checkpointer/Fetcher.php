@@ -14,6 +14,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use JsonException;
 
 final class Fetcher
 {
@@ -86,7 +87,16 @@ final class Fetcher
                 continue;
             }
 
-            yield $remote => json_decode($body, associative: true, flags: JSON_THROW_ON_ERROR);
+            try {
+                yield $remote => json_decode($body, associative: true, flags: JSON_THROW_ON_ERROR);
+            } catch (JsonException $e) {
+                Log::error('Received invalid JSON from remote {remote}', [
+                    'exception' => $e,
+                    'body' => $body,
+                ]);
+
+                continue;
+            }
         }
     }
 
