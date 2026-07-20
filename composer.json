@@ -6,7 +6,7 @@
     "keywords": [],
     "license": "AGPL-3.0-only",
     "require": {
-        "php": "^8.2",
+        "php": "^8.4",
         "calebporzio/sushi": "^2.5",
         "filament/filament": "^3.2",
         "laravel/framework": "^12.0",

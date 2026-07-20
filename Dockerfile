@@ -12,7 +12,7 @@ FROM pnpm-base AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
-FROM dunglas/frankenphp:1-php8.3-alpine AS php-base
+FROM dunglas/frankenphp:1-php8.4-alpine AS php-base
 
 RUN install-php-extensions \
     pcntl \
